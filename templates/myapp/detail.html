@@ -1,0 +1,49 @@
+<!-- detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .price {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .publisher {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ book.title|upper }}</h1>
+        <p class="price">Price: ${{ book.price }}</p>
+        <p class="publisher">Publisher: {{ book.publisher }}</p>
+    </div>
+</body>
+</html>
