@@ -1,7 +1,7 @@
-# Import necessary classes
+
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
-from .models import Publisher, Book, Member, Order
+from django.shortcuts import get_object_or_404, render
+from .models import Publisher, Book
 
 # Create your views here.
 def index(request):
@@ -33,9 +33,14 @@ def index(request):
 def about(request):
     return render(request, 'myapp/about.html')
 
+
 def detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    context = {
-        'book': book,
-    }
-    return render(request, 'myapp/detail.html', context)
+    response = HttpResponse()
+    title = f'<p>Title: {book.title.upper()}</p>'
+    price = f'<p>Price: ${book.price}</p>'
+    publisher = f'<p>Publisher: {book.publisher.name}</p>'
+    response.write(title)
+    response.write(price)
+    response.write(publisher)
+    return render(request, 'myapp/detail.html', {'book': book})
